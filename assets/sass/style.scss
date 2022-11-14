@@ -1,0 +1,661 @@
+// General
+
+@mixin font($font-family, $font-file) {
+	@font-face {
+		font-family: $font-family;
+		src: url($font-file+'.otf?') format('opentype'),
+			url($font-file+'.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+
+@include font('Brandon Grotesque', './Fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-black-58a8a3e824392');
+@include font('Source Sans Pro', './Fonts/Source_Sans_Pro/SourceSansPro-Regular');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box !important;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	transition: all 1s;
+
+	img {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	div,
+	section {
+		position: relative;
+		display: block;
+	}
+}
+
+
+html,
+body {
+	max-width: 100vw;
+}
+
+body {
+	background: #FFFFFF;
+	font-family: Source Sans Pro, sans-serif;
+	font-weight: normal;
+	color: #4A5362;
+
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: Brandon Grotesque, sans-serif;
+		font-style: normal;
+		font-weight: 450;
+		font-size: 40px;
+		line-height: 48px;
+	}
+
+	a,
+	a:visited,
+	a:focus {
+		text-decoration: none;
+	}
+
+	.btn {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		padding: 8px 16px;
+
+		min-width: 117px;
+		min-height: 38px;
+		border-radius: 3px;
+	}
+
+	.btn-blue {
+		background: #40B1D0;
+		box-shadow: 0px 3px 0px #2C798D;
+		color: #FFFFFF;
+	}
+
+	.btn-blue:hover {
+		box-shadow: 0px 6px 0px #2C798D;
+	}
+
+	.container {
+
+		width: 90%;
+		margin: auto !important;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: left;
+
+		@media (max-width: 1024px) {
+			width: 100% !important;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+		}
+	}
+
+	.container-fluid {
+		display: flex;
+		flex: 1 0 100%;
+		flex-direction: column;
+		justify-content: left;
+
+
+
+		.row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+		}
+	}
+}
+
+
+
+// Body
+
+header {
+	// Header
+	position: relative;
+	min-height: 770px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	// Navigation Bar
+	.navbar {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 78px;
+		align-items: center;
+		justify-content: center;
+		z-index: 0;
+		margin-top: 18px;
+
+		nav {
+			width: 90%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: center;
+			margin: auto;
+
+
+			a {
+				color: #343A49;
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 24px
+			}
+
+
+
+			.nav-center {
+
+				display: flex;
+				width: 100%;
+				flex-direction: row;
+				justify-content: space-evenly;
+				align-items: center;
+				height: 100%;
+
+				a {
+					display: block;
+				}
+
+				.logo {
+					text-align: center;
+					height: 100%;
+
+					// Logo design for mobile
+
+					@media(max-width: 768px) {
+						display: flex;
+						align-items: center;
+					}
+				}
+
+				.center {
+					position: relative;
+					width: 55%;
+					display: flex;
+					justify-content: space-evenly;
+					height: 100%;
+
+					// Add a bakground to the centen element on mobile
+
+					@media(max-width: 768px) {
+						background: white;
+					}
+				}
+
+				.dropdown {
+					position: relative;
+					min-height: 100%;
+
+					.dropbtn {
+						display: flex;
+
+						//  Adjust dropbtn on mobile
+						@media(max-width: 768px) {
+							display: none;
+						}
+
+						flex-direction: row;
+						justify-content: flex-start;
+						align-items: center;
+						flex-wrap: nowrap;
+						font-size: 17px;
+						border: none;
+						outline: none;
+						margin: 0;
+
+						i {
+							padding-left: 8px;
+						}
+					}
+
+					.dropdown-content {
+						position: absolute;
+						top: 0.5;
+						left: 0;
+						display: none;
+						min-height: 100px;
+						box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+						padding-top: 8px;
+					}
+
+					.dropdown-content a {
+						padding: 12px 16px;
+						text-decoration: none;
+						display: block;
+						text-align: left;
+					}
+
+					// display if hover
+
+					&:hover .dropdown-content {
+						display: block;
+					}
+				}
+
+				.icon {
+					display: none;
+				}
+			}
+
+			.nav-right {
+				min-width: 13.23%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				justify-content: space-between;
+				align-items: center;
+				gap: 15px;
+
+				// Adjusting nav-right on larger screen
+
+				@media(min-width: 2560px) {
+					max-width: 13.23%;
+					gap: 0px;
+				}
+
+
+				.btn {
+					background: #40B1D0;
+					box-shadow: 0px 3px 0px #2C798D;
+					color: #FFFFFF;
+					align-self: center;
+				}
+
+				.btn:hover {
+					box-shadow: 0px 6px 0px #2C798D;
+				}
+			}
+
+		}
+	}
+
+	// Landing Page
+
+
+	.landing {
+		width: 90%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: auto;
+
+
+		.hero-text {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: space-evenly;
+			width: 50%;
+			min-height: 370px;
+			gap: 50px;
+
+
+
+			h1 {
+				color: #343A49;
+				width: 600px;
+				height: 144px;
+				font-size: 56px;
+				line-height: 72px;
+				letter-spacing: -0.005em;
+			}
+
+			p {
+				font-weight: 600;
+				font-size: 24px;
+				line-height: 32px;
+				color: #4A5362;
+				min-height: 96px;
+
+			}
+
+			.btn {
+				width: 207px;
+				height: 58px;
+				border-bottom: 6px solid #3694AE;
+				gap: 15px;
+			}
+		}
+
+		.hero-image {
+			width: 40%;
+			object-fit: cover;
+			justify-content: center;
+			align-items: center;
+
+			img {
+				max-width: 100%;
+
+			}
+		}
+	}
+
+}
+
+// Benefits
+
+
+.benefits {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 104px;
+	gap: 80px;
+	width: 100%;
+	background: #F4F7F9;
+	align-self: center;
+
+	section {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 48px;
+	}
+
+	// client benefits card
+	.benefit {
+		justify-content: center;
+		align-items: center;
+		min-width: 250.92px;
+		min-height: 332px;
+		background: white;
+		border-bottom: 1px solid #DADADA;
+		display: flex;
+		align-self: center;
+
+		div {
+			width: 220px;
+			height: 290px;
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+
+			img {
+				width: 63px;
+				min-height: 48px;
+				order: 0,
+			}
+
+			div {
+				width: 220px;
+				height: 290px;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+
+				h4 {
+					width: 220px;
+					height: 72px;
+					font-weight: 450;
+					font-size: 28px;
+					line-height: 36px;
+					color: #343A49;
+				}
+
+				p {
+					width: 220px;
+					height: 130px;
+					font-weight: 400;
+					font-size: 18px;
+					line-height: 26px;
+					color: #4A5362;
+
+					span {
+						color: #4A5362;
+					}
+				}
+			}
+		}
+
+		// card hover
+
+		&:hover {
+			width: 287px;
+			min-height: 386px;
+			margin-right: 32px;
+			border-radius: 4px;
+			background: #343A49;
+			display: flex;
+			justify-content: space-around;
+
+			div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-self: center;
+				gap: 26px;
+
+				img {
+					width: 63px;
+					min-height: 48px;
+					order: 1;
+				}
+
+				div {
+					align-self: center;
+
+					h4 {
+						width: 201px;
+						min-height: 72px;
+						font-weight: 450;
+						font-size: 28px;
+						line-height: 36px;
+						color: #FFFFFF;
+					}
+
+					p {
+						width: 201px;
+						min-height: 130px;
+						font-weight: 600;
+						font-size: 18px;
+						line-height: 26px;
+						color: #FFFFFF;
+
+						span {
+							color: #40B1D0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Responsive Web Design - Media Queries
+
+// Mobile design
+
+@media screen and (max-width: 768px) {
+	html {
+		margin: 2%;
+
+		body {
+			display: flex;
+			flex-direction: column;
+			gap: 50px;
+
+			header {
+				width: 100%;
+				gap: 50px;
+
+				.navbar {
+
+					nav {
+
+						.nav-center a:not(:first-child),
+						.dropdown .dropbtn {
+							display: none;
+
+						}
+
+						.nav-center a.icon {
+							float: right;
+							display: block;
+						}
+
+						.nav-right {
+							display: none;
+						}
+
+
+
+						.nav-center.responsive {
+							width: 100%;
+							display: block;
+							position: relative;
+
+							.logo {
+								img {
+									width: 35%;
+								}
+							}
+
+							.icon {
+								position: absolute;
+								right: 0;
+								top: 0;
+							}
+
+							.center {
+								flex-direction: column;
+								margin-top: 10px;
+								width: 100%;
+
+								a {
+									float: none;
+									display: block;
+									text-align: left;
+									padding: 14px 16px;
+								}
+
+								.dropdown-content {
+									position: relative;
+								}
+							}
+						}
+					}
+
+				}
+
+			}
+
+			.landing {
+				flex-wrap: wrap;
+				gap: 30px;
+
+				.hero-text {
+					width: 100%;
+					gap: 10px;
+
+					h1 {
+						width: 100%;
+						height: auto;
+						font-weight: 700;
+						font-size: 36px;
+						line-height: 50px;
+					}
+
+					p {
+						@media(max-width: 480px) {
+							font-size: 15px;
+						}
+
+						font-size: 25px;
+						line-height: 30px;
+
+						br {
+							display: none;
+						}
+					}
+
+					a {
+						gap: 16px;
+					}
+				}
+
+				.hero-image {
+					width: 100%;
+				}
+
+			}
+		}
+
+		main {
+			.benefits {
+				padding: 0%;
+
+				h3 {
+					font-size: 36px;
+					line-height: 48px;
+					text-align: center;
+				}
+
+				section {
+					.benefit {
+						justify-content: center;
+						align-items: center;
+
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 1024px) {
+	.container-fluid {
+		.landing {
+			.hero-text {
+				h1 {
+					width: 100%;
+					font-size: 40px;
+				}
+
+				p {
+					br {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	main {
+		.benefits {
+			section {
+				justify-content: center;
+			}
+		}
+	}
+}
